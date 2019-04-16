@@ -3,6 +3,8 @@
 % Packages
 \usepackage{caption}
   \captionsetup{font=footnotesize}
+\usepackage{epigraph}
+\usepackage{float}
 \usepackage{fullpage}
 \usepackage{geometry}
   \geometry{verbose,tmargin=2cm,bmargin=2.5cm,lmargin=2.5cm,rmargin=2.5cm,footskip=1.5cm}
@@ -13,6 +15,7 @@
   \bibliographystyle{plainnat}
 \usepackage{setspace}
   \onehalfspacing
+\usepackage[textsize=scriptsize]{todonotes}
 
 % User-defined commands
 \newcommand{\latex}{\LaTeX{}} % latex symbol
@@ -26,11 +29,13 @@
 The Stepping Stone from Monetary Economics in the IS-LM Model to the New-Keynesian paradigm}
 
 \author{
-  Jane Doe (coordinator)
+  (coordinator)
   \and
-  John Doe
+  Fabio Bernasconi
   \and
-  Ana Smith
+  Fabiola Cappiello Segura
+  \and
+  Stephanie Jordan
 }
 % =================================================================================================
 
@@ -60,13 +65,9 @@ You \textbf{should} use external sources. Do not copy/paste. Understand and dige
 Both. You want to present ideas and you want to contrast these ideas with evidence. That is what Science is about. And Science is what we use to create knowledge. And your chapter will be a great summary of all human knowledge on the topic(s) you are working on. Of course, depending on the topic(s) covered by your chapter the balance between theory and evidence needs to be different. You want to balance two with the objective to maximise how understandable and clear your chapter is.\footnote{Your Professor knows the evidence, do not try to earn points by signalling you have read a lot. Show that you have understood so well what you have read that you can explain it very well.}
 
 \subsection*{Should the chapter follow a specific organization scheme?}
-No. Should it be organised to maximise how understandable it is? Definitely.
+No. Should it be organised to maximise how understandable it is? Definitely. In this regard, to have an introduction tends to be helpful. The purpose of the introduction is to provide motivation and to lay out the topics covered in the chapter.
 
-
-
-
-
-
+\newpage
 \tableofcontents
 \listoffigures
 \listoftables
@@ -144,19 +145,269 @@ To reference another part of the document is very easy, it only requires creatin
 \section{How to present equations}
 \label{sec:math}
 In \latex it is very easy to work with equations and mathematical expresions. For example one can easily insert mathematical expressions in the text by writting $ a = \frac{b}{c} \times \beta $. Equations can also be inserted by:
+
+% ----- BEGIN EQUATION
 \begin{equation}
   f(x)=(x+a)(x+b)
   \label{eq:function}
 \end{equation}
+% ----- END EQUATION
+
 Equations can also be referenced, like Equation \ref{eq:function}. For more information on mathematics in \latex see \href{https://en.wikibooks.org/wiki/LaTeX/Mathematics}{this} section the \latex Wikibook.
-
-
 % -------------------------------------------------------------------------------------------------
-% =================================================================================================
 
+% =================================================================================================
 \part{Overview of Modern Monetary Policy}
 % ===== WHAT WE KNOW ==============================================================================
 \chapter{What We Know}
+\epigraph{Inflation is always and everywhere a monetary phenomenon.}{\citet{Friedman_1963}}
+
+This sentence might not seem all too odd for an student of introductory Macroeconomics, right? When learning about basic Economics, it makes sense as to why changes in the money supply, for instance, can cause inflation. The deeper one goes, however, the less clear this relationship seems. This chapter aims to give a sense of what we know about monetary policy and we will thus return to this quote further on.
+
+In this chapter, we provide a refresher of certain concepts that you should already be familiar with. In Section \ref{sec:monetary_policy_and_monetary_economics}, we familiarize with the concepts of Monetary Policy and Monetary Economics, while also clarifying the tools and goals of Monetary Economics. In Section \ref{sec:consensus}, we give a short overview of the economic consensus about the effects of Monetary Policy. In Sections \ref{sec:quantity_theory}, and \ref{sec:IS_LM}, we lay down two basic theoretical frameworks, the quantity theory of money and the IS-LM model, to discuss their policy implications and how well they are able to account for what we observe in the date. Finally, in Section \ref{sec:money_growth_and_inflation}, we look at the relationship between money growth and inflation and then (\ref{sec:enjoy_with_care}) we try to explain some of the reasons why these models have a hard time explaining the empirical data.
+
+% ----- Monetary Policy and Monetary Economics ----------------------------------------------------
+\section{Monetary Policy and Monetary Economics}
+\label{sec:monetary_policy_and_monetary_economics}
+
+What is exactly the difference between \textit{Monetary Policy} and \textit{Monetary Economics}? At first sight they seem tightly related, and in a certain way they are. The term \textit{Monetary Policy} is used to describe how a Central Bank manages its tools in order to achieve the policy goals set in its mandate. By “the SNB’s monetary policy” we thus describe how the Swiss National Bank acted within a certain time period. \textit{Monetary Economics}, on the other hand, tries to lay out the mechanisms through which policy tools affect economic outcomes and policy goals. Empirical findings in the domain of monetary economics should be useful to central bankers in the conduct of monetary policy, helping them choose the most appropriate policy tools for the policy goals.\todo[inline]{This difference is important. It can be better explained.}
+
+In order make these definitions less abstract, the terms policy goals and policy tools need to be clarified. Although \textit{policy goals} can significantly differ, many Central Banks aim at keeping inflation low and stable. The Swiss National Bank, the European Central Bank and the Fed all share the goal of keeping the price level stable. However, the Fed also has the goals of maximum employment, … and moderate long-term interest rates.\todo{Visualisation (table?) of stated goals for different central banks across countries.}
+
+Since the central bank has a large set of tools at its disposal, to simplify our analysis, we construct a stylized framework with two main goals and four tools. In Table \ref{tab:policy_goals_tools} we listed a simplified set of tools and goals.
+
+% ----- BEGIN TABLE
+\begin{table}[h!]
+  \centering
+    \begin{tabular}{ p{7cm} | p{7cm} }
+	\textbf{Goals} & \textbf{Tools} \\
+    \hline
+       Low and stable inflation &  Quantity of money\\
+	Stabilize output around potential, avoid & Interest rate  \\
+	or limit recessions and booms & Quantitative easing \\
+	& Macroprudential tools \\
+    \end{tabular}
+  \caption{Simplified framework of tools and goals for monetary policy}
+  \label{tab:policy_goals_tools}
+\end{table}
+% ----- END TABLE
+
+\todo[inline]{The reason why we simplify needs to be explained. We need a theoretical framework to analyse all countries without getting lost in the details.}
+
+We define two main goals of central banks:
+\begin{itemize}
+  \item \textbf{Low and stable inflation}, usually defined as an inflation rate in the range of 1-3\% per year and that can still be controlled by the Central Bank. For instance, the FED defines an inflation rate of 2\% per year as in line with the long-term goal of price stability.\todo{Proper citation of FED technical report.}
+  \item \textbf{Stabilize output around potential, avoid or limit recessions and booms}. Central Banks should aim at smoothing recessions and booms, without letting output or employment fluctuate too much across business cycles.
+\end{itemize}
+\todo[inline]{Both goals need further development and justification.}
+
+We define the following policy tools:
+\begin{itemize}
+  \item \textbf{Quantity of money}: The Central Bank can affect the money supply through open market operations, by participating in the market for bonds or other suitable assets. A central bank that sells its government bonds' holdings, receives an amount of money, which is therefore taken out of the economy. As a result, there is a lower money supply, which has eventually been shrunken by the central bank. The quantity of money can also be affected through reserve requirements. These reserve requirements are being set by the central bank and executed by commercial banks. They are expressed as a percentage of the demand deposits owed to the customers of the bank. A reduction in the reserve ratio increases the amount that banks can loan out, increasing the money multiplier and thus the money supply. A third way for the Central Bank to affect money supply is through the interest rate at which commercial banks can borrow reserves from the Central Bank. Changes in this interest rate can stimulate or discourage borrowing. For instance, a reduction in this interest rate will increase borrowings by commercial banks and increase the money supply.\todo[inline]{A better summary can be constructed gathering information from websites of CBs (learning the details of how it is done).}
+  \item \textbf{Interest rate}: Central banks can also target the interest rate and accommodate the demand for money, instead of controlling the supply, in order to achieve the targeted interest rate. In the forecasting models of many central banks the interest rates turned out to be sufficient statistics of monetary policy and are becoming a more popular tool compared to focusing on only money supply. The Fed, for instance, targets the Federal Funds rate, which is a short-term interest rate that commercial banks charge on each other for overnight loans. By deciding to set a lower or higher target, they influence short-term interest rates in the public markets too. Central Banks control more than one interest rate. For instance, the Fed sets the rate it pays on reserves and the rate that commercial banks have to pay on the reserves they borrow from the Fed. The two rates are used to prevent too large fluctuations in the target rate, which is the Federal Funds rate. The ECB also sets the interest rate at which commercial banks can borrow reserves overnight and the interest rate paid to commercial banks on their deposits at the Central Bank and uses both rates to keep the overnight rate on target.\footnote{See \citep*[pp. 411-417]{Mishkin_2016}.}
+  \todo{Not clear this reference is needed.}
+  \todo[inline]{There is a mix between interest rate targeting as a policy framework and the policy rate as a tool. At this point, we need a short summary of how we got to the assumption that CBs control the interest rate (in reality they don't!).}
+  \item \textbf{Unconventional Monetary Policy}: \todo{Here we group all policy instruments that do not typically appear in formal (mathematical) models.}
+  \begin{itemize}
+    \item \textit{Quantitative easing}: Central Banks can also employ unconventional tools. There are two main rationale for quantitative easing and non-conventional monetary policy: the financial system may be having troubles allocating resources properly, or the short-term nominal interest rate may be near zero where it can't be lowered further due to an adverse shock. The interest rate usually addressed by conventional policies is the money market's. The capital markets, however, determine the long run interest rate and this one is particularly important for firms that need to finance their - mostly long term - investment projects. Therefore, the long run interest rate is crucial for economic growth and investments. Under quantitative easing the central bank resorts to buying riskier securities with longer maturities than usual to drive long term interest rates down. It is thus a special case of open-market operations by the central bank through purchases of long-term government or commercial bonds, in order to flatten the yield curve by lowering long-term interest rates.
+    \todo[inline]{What we need at this point is a short summary of what quantitative easing is. Not why it has been implemented, the objectives that may target, nor what its effects might be.}
+    \item \textit{Macro-prudential tools:} Generally speaking, macro-prudential tools are used to strengthen the financial system as a whole and thus increase its resilience. Especially after the global financial crisis and since macroeconomic and financial imbalances are often due to an unhealthy international financial system, it was essential to find a financial supervisor that would be able to prevent systematic risk and recognize economic imbalances. The Fed, for instance, in addition to supervising the financial stability of individual institutions, should also take into account risks for the financial system as a whole or for a part of it by exercising its powers to supervise and regulate the banking system.
+    \todo[inline]{At this point, we want to define and explain what macro-prudential tools are. Not their effect, importance, nor how they should be used. If one would like to go discuss their effects \citet*{ABG_2018} would be a good starting point.}
+  \end{itemize}
+\end{itemize}
+% -------------------------------------------------------------------------------------------------
+
+% ----- The consensus on Monetary Policy ----------------------------------------------------------
+\section{The \textit{consensus} on Monetary Policy in the short and long run}
+\label{sec:consensus}
+At the beginning of the chapter we introduced the famous quote by Friedman regarding inflation. Today there is still a certain agreement with this definition.\todo{It's not a definition.}
+
+The general consensus among economists is that, in the \textit{long run}, monetary policy only causes hyperinflation\todo{Not correct.}. Monetary policy cannot, over the long run, affect real economic variables and has no effect on the long run employment rate. And since hyperinflation is considered costly for the economy, central bankers need to weigh up costs and benefits carefully, when choosing the long run inflation rate target.
+
+In the \textit{short run}, however, the consensus is that monetary policy can affect real economic variables such as output and employment, in addition to affecting the exchange rate, asset prices and the stock market prices.
+
+\todo[inline]{This is an important section. The aim is to present the framework (the consensus) within which Economics has thought about Monetary Policy. Some remarks are necessary. First, in science, consensus does not imply truth. Second, this consensus is the outcome of several decades of research. Hence, there is both empirical evidence and a body of theoretical work that explain why the consensus is what it is today and not something else. These reasons need to be (briefly) explained. Thirdly, this consensus should be understood as a guideline to make sense of most of the existing research not as a limitation to think about Monetary phenomena.}
+% -------------------------------------------------------------------------------------------------
+
+% ----- The most basic Monetary Economics ---------------------------------------------------------
+\section{The most basic Monetary Economics}
+\label{sec:most_basic_Monetary_Economics}
+\todo[inline]{It is a good idea to have a chapter to review the two most basic frameworks used to think about Monetary Economics and Monetary Policy. Namely, the Quantity Theory of Money and the IS-LM Model. It is also a good idea to confront both frameworks with the data and discuss its weaknesses. However, the essential feature of this chapter has to be an effective summary of each framework. Only then, the indispensable and valuable criticism can be added.}
+
+\subsection{The Quantity Theory of Money}
+\label{sec:quantity_theory}
+
+The Quantity Theory of money is the foundation of monetarism\todo{What is monetarism?} and tries to explain changes in the general level of commodity prices. The doctrine states that changes in the purchasing power of money are mainly determined by changes in the quantity of the money stock in circulation.
+\todo[inline]{Do not mix the debate on schools of thought with purely explaining the theory. Maybe \citet{Humphrey_1974} is not the right reference.}
+
+The quantity theory of money has taken different forms over time, depending on the quantity equation that lied at its basis. For a review of the changes see \citet*{Friedman_1970}.
+It is however important to remember that under all different forms, the quantity equation always remains a tautology \citep*[p. 195]{Friedman_1970}.\todo{Requires much more explanation. Not understandable as it stands.}
+
+The quantity equation is then:
+% ----- BEGIN EQUATION
+\begin{equation}
+\label{eq:QTM}
+  M \times V = P  \times Y\text{,}
+\end{equation}
+% ----- END EQUATION
+where $M$ is the quantity of money supplied by the central bank, the velocity $V$ is the income velocity of money, $P$ is the price level, and $Y$ the economic output.
+
+To develop the theory, it's important to understand the assumptions behind each variable.
+
+\textbf{The income velocity of money V}, is to interpret as the average number of times the stock of money is used to buy all final goods in the economy. It is defined as the ratio of nominal GDP over the quantity of money. Velocity reflects changes in the demand for money, which is assumed to change slowly, for instance due to changes in technology. A technological improvement that decreases the real money balances held by people in each period would increase velocity. Velocity should thus be constant, at least in the short run.
+
+\textbf{The output Y}, real GDP, is solely determined by the factors of production and the efficiency with which they are combined, and can increase thanks to technological progress. It is assumed that the economy tends to the state of full employment, such that the number of goods and services sold is at its current maximum.
+
+\textbf{The stock of money M}, is decided by the Central Bank and should be easily identifiable. We already discussed in section \ref{subsec:tools} how the Central Bank may affect this variable in practice.
+
+\textbf{The price level P} equals the GDP defalcator and is assumed to be fully flexible in order to keep output in the economy unaffected by monetary policy. The economy needs thus to be perfectly competitive, such that no firm will hold enough market power to be able to manipulate the prices and wages they charge.
+\todo[inline]{This \textit{discussion} on the variables of Eqaution \ref{eq:QTM} is not well framed. First, it needs to be clear what is the difference between the \textbf{theoretical concepts} represented in the equation and their \textbf{empirical counterparts}. This is a potentially very interesting aspect to think about. It can be used to explain how difficult can it be to bring to the data seemingly \textit{simple} theories. Second, it is interesting to discuss how has evolved across time the interpretation that economists have given to the Quantitative Theory of Money. However, this cannot be mixed with the first point.}
+
+If the quantity theory is correct in its predictions, the Central Bank cannot mitigate recessions or slow down booms during the business cycle, since output is given by factors that cannot be influenced by the monetary policy of the central bank. Increases or reductions in the growth rate of money supply are absorbed by inflation. It reaches thus different conclusions with respect to today's consensus among economists. Central Banks should only aim at keeping the growth rate of money supply under tight control in order to achieve price stability.\todo{Interesting discussion. To be expanded and improved.}
+
+\subsubsection{The Quantity Theory of Money against the data}
+\label{sec:quantity_theory_against_data}
+\todo[inline]{It is a good idea to confront the assumptions of the quantity theory of money against the data. However, a good critic needs to understand not only what the theory formally states but also what it \textit{means}.}
+
+Figure \ref{fig:M2_velocity}\todo{Get raw data and plot it using own format. Why seasonally adjust?} shows that the velocity of money has not been constant neither in the short-run nor in the long run.
+
+% ----- BEGIN GRAPH
+\begin{figure}[h]
+  \centering
+    \includegraphics[width=0.6\textwidth]{M2_velocity.png}
+    \caption{Velocity of the M2 Money stock, calculated as the ratio of quarterly GDP (series GDP) to the quarterly average of M2 money stock (series M2SL). Quarterly data from 1959 to 2018, seasonally adjusted. Source: Federal Reserve Bank of St. Louis, Velocity of M2 Money Stock [M2V], retrieved from FRED, Federal Reserve Bank of St. Louis; https://fred.stlouisfed.org/series/M2V, March 18, 2019.}
+    \label{fig:M2_velocity}
+\end{figure}
+% ----- END GRAPH
+
+Figure \ref{fig:unempl_US}\todo{Get raw data and plot it using own format. Why seasonally adjust?} shows that the unemployment rate fluctuates a lot and, consequently, $Y$ might not reach full capacity.
+
+% ----- BEGIN GRAPH
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=0.50\textwidth]{unempl_US.jpg}
+    \caption{Monthly unemployment rate for the population 16 years and over in the US. January 1948 to February 2019. Series LNS14000000 seasonally adjusted. Data from U.S. Bureau of Labor Statistics [BLS]: https://www.bls.gov/}
+    \label{fig:unempl_US}
+\end{figure}
+% ----- END GRAPH
+
+Finally, defining what money, is not an easy task since many economists have different opinions about this. For instance cash, bank accounts, savings accounts or credit cards all have a monetary value, yet there is no universal definition as to which ones account for the term \textit{money}. The lack of a common definition of money supply is a problem for the equation.
+
+Additionally, the central bank does not control the money supply just by themselves. Creating and destroying money, as we know, can easily be made by the financial sector. By giving out more loans and creating money, M in the equation is directly influenced by the private sector.
+
+Moreover, the central bank and commercial banks will have to work together. An increase in the money supply by the Central Bank requires the cooperation of the private sector first, especially if we think about the fact that targeting the interest rate is becoming a more common tool used by the central bank since banks will eventually enforce it. At the end of the day, private banks are in charge and not the central bank. The decisions made by the central bank will always depend on the rest of the economy and what they are willing to do.
+\todo[inline]{These three paragraphs reflect that the criticism is done by taking the theory at face value, which is a weak critic. It can be improved.}
+
+\subsection{The IS-LM Model}
+\todo[inline]{The description of the IS-LM model need to be significantly improved.}
+\label{sec:IS_LM}
+
+\textbf{Money demand}. The quantity theory assumed a constant velocity, which made the money demand a linear function of nominal income. This model is instead based on Keynes' liquidity preference theory, where interest rates play a crucial role for money demand. Since a higher interest rate will increase the opportunity costs of holding money, which bears no interest, the demand for real money balances will be negatively related to the prevailing interest rate. But will be positively related to income, which increases the number of transactions for which money is needed.
+
+\textbf{Money supply}. In this model the supply is assumed to be fixed by the Central Bank, which causes the supply curve to be vertical. An increase in the money supply shifts the curve to the right, whereas a decrease does the exact opposite.
+
+As we can observe in figure \ref{fig:LM_curve}, the LM curve is constructed by plotting all the combinations of interest rate and income for which the money market is in equilibrium. As said, as real income increases, demand for real money balances grows, shifting the demand curve in the money market to the right. In the new money market equilibrium real money balances are unchanged, but the prevailing interest rate is now higher. Thus, there is a positive relationship between income and interest rate and the LM curve is upward sloping.
+
+% ----- BEGIN GRAPH
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.65\textwidth]{LM_curve.jpg}
+    \caption{Construction of the LM curve. Reprinted from: \citet*[p. 331]{Mankiw_2016}}
+    \label{fig:LM_curve}
+\end{figure}
+% ----- END GRAPH
+
+As figure \ref{fig:LM_curve_shift} shows, a reduction in the growth rate of the money supply will shift the money supply to the left, raising the interest rate for the same income level, which causes the LM curve to shift upwards.
+
+% ----- BEGIN GRAPH
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.75\textwidth]{LM_curve_shift.jpg}
+    \caption{Decrease in the money supply and shift in the LM curve. Reprinted from: Lecture slides}
+    \label{fig:LM_curve_shift}
+\end{figure}
+% ----- END GRAPH
+
+The IS curve plots the combinations of interest rate and income for which the goods’ market is in equilibrium. The curve has to be downward sloping because a higher interest rate will lead to a lower equilibrium income, due to a reduction in planned investments.
+
+By changing the price level and seeing how the equilibrium income varies in the IS-LM framework, we can construct the AD curve. An increase in the price level would decrease real money supply, raise the money market interest rate and shift the LM curve upwards, thus reducing equilibrium income at the intersection between IS and LM. The AD curve will then be downward sloping in the Y – P diagram.
+
+The policy implications of the IS-LM model are very straightforward. When the economy is facing a recession, an expansionary monetary policy would reduce the interest rate, stimulating investments and increasing output. Eventually, as demand grows faster than the rate at which supply adjusts, inflation would arise, causing a reduction in the real money supply, which will reverse the initial stimulus.
+\todo[inline]{The discussion of the policy implications needs more richness and to be deeper. There is much more in the IS-LM model than the superficial implications.}
+
+When the economy is overheating, reducing the growth rate of money supply would increase the interest rates, which would decrease aggregate demand and slowdown inflation.
+
+In the long-run, a higher growth rate of the money supply would not have an effect on the real variables but will only feed inflation. Average inflation over a certain period will then be equal to the average of the growth rate of money supply.
+
+Under the IS-LM model the central bank should try to keep a growth rate of money supply that is consistent with its inflation target but could temporarily deviate from it to respond to shocks.
+%--------------------------------------------------------------------------------------------------
+
+% ---- The Basic Theory and the Data --------------------------------------------------------------
+\section{The Basic Theory and the Data}
+\label{sec:Basic_Theory_Data}
+There is one policy implication that is equal for the Quantity Theory and the IS-LM framework, and it is that a permanently higher growth rate of money supply should lead to inflation in the long run.
+
+It's important to clarify first how M is defined as money demand. As we have already seen in the section about the Quantity Theory of Money, M stands for the money stock. However, in reality there are different monetary aggregates that one could take into consideration. The Fed, for instance, reports two measures of money: M1 and M2. And unfortunately, the two do not tend to move necessarily together.
+\begin{itemize}
+  \item \textbf{M1} is the definition of money that contains the assets with the highest liquidity. It therefore represents the total sum of cash (notes and coins), travellers check and demand deposits.
+  \item \textbf{M2} is a broader definition of money, that contains also less liquid assets. It includes, in addition to M1, savings deposits, small-denomination certificates of deposit and other money market asset on which checks can be written.
+\end{itemize}
+
+% ----- BEGIN GRAPH
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.60\textwidth]{SR_money_inflation.jpg}
+    \caption{Annual inflation and annual money growth rate for the US. Period 1965-2013. Original data from Federal Reserve Bank of St. Louis, FRED database: http://research.stlouisfed.org/fred2/. Reprinted from: \citet*[p. 532]{Mishkin_2016}}
+    \label{fig:SR_money_inflation}
+\end{figure}
+% ----- END GRAPH
+
+First, we look at the relationship between money growth and inflation in the short run. Figure \ref{fig:SR_money_inflation}\todo{Get raw data and plot it using own format. Why seasonally adjust?} below shows the relationship between the annual growth rate of M2 and the annual inflation rate with a 2-year lag. If we define the long run as a decade, then we are looking at a short run relationship. Certainly, the relationship between the two variables does not seem as tight as postulated by the quantity theory and inflation in this case doesn't seem to be explained only by the growth rate of money supply. \citet*[p. 530]{Mishkin_2016} argues that the weak relationship signals a short run stickiness of prices and wages.
+
+% ----- BEGIN GRAPH
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.70\textwidth]{Money_inflation_across_countries.jpg}
+    \caption{Relationship between GDP deflator annualized and annualized growth rate of money across countries. 80 countries for 1987-1992 and 81 countries for 1992-1997. Original data from: International Monetary Fund (1999). \textit{International Financial Statistics}. Reprinted from: \citet*[p. 40]{Dwyer_Hafer_1999}}
+    \label{fig:money_inflation_countries}
+\end{figure}
+% ----- END GRAPH
+
+Figure \ref{fig:money_inflation_countries} depicts the 5-year average growth rate of money relative to real income against the 5-year average inflation for different countries \citet*{Dwyer_Hafer_1999}. We are thus looking at a relationship over a longer term than the 2 years of the example above. Probably, still, we can see it more as a medium run relationship between the two variables.
+
+The relationship between money growth and inflation seems pretty convincing, with the points lying near the more or less along the 45-degrees straight line. However, \citet*{DeGrauwe_Polan_2005} studied the cross-country relationship between those two variables and argued that the relationship for the long run is very strong, but mainly due to countries with hyperinflation. The authors make the point that this relationship is virtually non-existent for countries with a lower inflation rate and might explain why the time series data for the single countries struggle to find a correlation.
+\todo[inline]{There is much more to get from \citet*{DeGrauwe_Polan_2005} and the related literature.}
+
+\subsubsection{Oil shocks}
+\label{subsub:oil_shocks}
+% ------------------
+% Check references
+%-----------------
+\citet{Blanchard_Gali_2010} argue that there have been four large oil shocks in the years 1973, 1979, 1999, 2002. Those were episodes where global oil prices grew by more than 50\% and remained higher for at least one year. In Figure \ref{fig:oil} the inflation rate, as measured by the CPI, and the real oil prices are plotted. The relationship seems much closer than it was for money growth rate and inflation. Notice in particular that the two first oil shocks were also accompanied by huge surges in inflation for the US.
+\todo[inline]{There is much juice to get from \citet{Blanchard_Gali_2010}}
+
+% ----- BEGIN GRAPH
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.75\textwidth]{Oil_shocks_inflation.jpg}
+    \caption{Log of real oil price, normalized by GDP deflator, and annual CPI inflation in the US. 1950-2005. Reprinted from: \citet*[p. 12]{Blanchard_Gali_2007}}
+    \label{fig:oil}
+\end{figure}
+% ----- END GRAPH
+
+\citet*{Blanchard_Gali_2010} estimate that inflation was particularly sensitive to oil prices in the 1970s and found that if oil prices increased by 10\%, inflation rose by 1\% with a lag of two to three quarters. \todo[inline]{What is the point that \citet*{Blanchard_Gali_2010} make?}
+
+However, inflation caused by higher oil prices would not necessarily be inconsistent with the predictions of the AD-AS model (which is based on the IS-LM model). Shocks in the oil prices are a classical example of supply shock, which, by shifting the AS curve to the left, should temporarily increase inflation.\todo[inline]{Here there is an important missed point with respect the policy lessons from the IS-LM model. What is the policy recommendation of the IS-LM model when there is an exogenous increase in prices (like an oil shock)?}
+
+\subsubsection{Credit cards invention}
+\label{subsub:credit_cards_invention}
+\todo[inline]{It's a good idea to have a section that explains how credit cards might have changed the relationship between money supply growth and inflation. However, there needs to be a clear exposition of the arguments that have been put forward in the literature. \citet{Geanakoplos_Dubey_2010} is a good starting point to explore the literature but there are other works that tackle the issue at hand more directly.}
+
+\subsubsection{More/other criticism}
+\todo[inline]{More criticism on the IS-LM Model can be added to this chapter. Some references to start exploring the literature are \citet{Cooley_LeRoy_1981}, \citet{Driscoll_Ford_1980}, \citet{Humphrey_1974}, or \citet*{McLeay_etal_2014}.}
+
+
+%--------------------------------------------------------------------------------------------------
 
 % =================================================================================================
 
