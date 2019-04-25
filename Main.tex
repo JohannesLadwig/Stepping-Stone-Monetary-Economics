@@ -35,7 +35,17 @@ The Stepping Stone from Monetary Economics in the IS-LM Model to the New-Keynesi
   \and
   Fabiola Cappiello Segura
   \and
+  Alexandru Dolea
+  \and
   Stephanie Jordan
+  \and
+  Calvin Limat
+  \and
+  Eva Pampurik
+  \and
+  Michel Voutat
+  \and
+  Daniela Wendler
 }
 % =================================================================================================
 
@@ -61,11 +71,17 @@ As short as possible. Your objective is that every time you explain something yo
 \subsection*{Can external sources be used?}
 You \textbf{should} use external sources. Do not copy/paste. Understand and digest every new piece of information before you add it to your chapter. Cite properly, see Section \ref{sec:citations}.
 
+There is lots of information out there related to the topics you want to cover in your chapter. It is humanly impossible to review \textit{all} that information in order to write anything. Try to focus on academic/policy work. That is, give priority to academic articles in scientific journals or journals of central banks, working papers, books, and policy reports. There are exceptions but newspaper's articles and op-eds tend to either contain unimportant information or rephrase ideas and arguments lay out in academic outlets.
+
+Not all academic work is equally valuable for your review. The rank of the journal and the number of citations of an article are positively correlated with its importance but this relationship is far from being a one-to-one matter. There is no way around of reading the article and assessing the value of the ideas/arguments in it. Never use authority as an argument. It is not the case that because the author of an statement has a Nobel prize or is a well-known academic that the statement becomes true or valuable.
+
 \subsection*{Should the content be theoretical or empirical?}
 Both. You want to present ideas and you want to contrast these ideas with evidence. That is what Science is about. And Science is what we use to create knowledge. And your chapter will be a great summary of all human knowledge on the topic(s) you are working on. Of course, depending on the topic(s) covered by your chapter the balance between theory and evidence needs to be different. You want to balance two with the objective to maximise how understandable and clear your chapter is.\footnote{Your Professor knows the evidence, do not try to earn points by signalling you have read a lot. Show that you have understood so well what you have read that you can explain it very well.}
 
 \subsection*{Should the chapter follow a specific organization scheme?}
 No. Should it be organised to maximise how understandable it is? Definitely. In this regard, to have an introduction tends to be helpful. The purpose of the introduction is to provide motivation and to lay out the topics covered in the chapter.
+
+
 
 \newpage
 \tableofcontents
@@ -405,14 +421,62 @@ However, inflation caused by higher oil prices would not necessarily be inconsis
 
 \subsubsection{More/other criticism}
 \todo[inline]{More criticism on the IS-LM Model can be added to this chapter. Some references to start exploring the literature are \citet{Cooley_LeRoy_1981}, \citet{Driscoll_Ford_1980}, \citet{Humphrey_1974}, or \citet*{McLeay_etal_2014}.}
-
-
 %--------------------------------------------------------------------------------------------------
 
 % =================================================================================================
 
 % ===== INFLATION TARGETING =======================================================================
 \chapter{From Money Targeting to Inflation Targeting}
+
+% ----- Historical context ------------------------------------------------------------------------
+\section{Historical Context}
+\label{sec:Historical_Context}
+\todo[inline]{It's a good idea to introduce the topic by giving historical perspective/context. However, this introduction needs to be clear and cannot rely on concepts that have not been yet explained. Good references to start exploring the literature is \citet{Svensson_2010}, \citet{Bernanke_Mishkin_1997}, and \citet{Mishkin_2001}.}
+
+There was mounting empirical evidence that the link between monetary supply and inflation was not as strong as previously believed. This led to central bankers beginning to target levels of inflation. With the introduction of the Reserve Bank Act of 1989, New Zealand established the policy framework today referred to as inflation targeting and were by the early 1990s the first country to introduce an explicit inflation target.
+
+Inflation targeting consists of a public announcement of a numerical inflation target and a high degree of transparency to the public about the objectives of the policy as well as tightened accountability of the central banks for meeting the announced objectives.
+
+Central banks moving from money growth targeting to inflation targeting replaced money supply as the intermediate target and introduced the inflation forecast as the new intermediate (and final) target. As a result, the central banks gain some freedom over how they react to different economic circumstances, since the variables considered in taking decisions about monetary policy are no longer restricted to monetary aggregates. Every factor influencing inflation can be reflected on, such as the money supply and the exchange rate, without having a dominant variable but by acknowledging the net effect of them all. \todo{The chain of thought in this paragraph can be much better explained using simpler sentences. Trying to sound complex has negative value.}
+
+This new interaction of a long-term commitment to price stability and freedom in using different policy instruments is known as constrained discretion and is an essential trait for the central banks to react to events in the short run in order to also stabilize the real economy. Hence, inflation targeting needs to be viewed as a framework, and not as a rigid rule, within which this constrained discretion can be applied. \todo[inline]{Why is this important? Background context missing. It can be explained in an easier way.}
+%--------------------------------------------------------------------------------------------------
+
+% ----- Unemployment and Inflation ----------------------------------------------------------------
+\section{Unemployment and Inflation}
+\label{sec:Unemployment_Inflation}
+\todo[inline]{An introduction to the Phillips curve is missing. Such introduction needs to answer the following questions. What is the Phillips curve? What idea does it represent? What are its limitations? When explaining the limitations the focus of the discussion has to be that an observed correlation has been taken as an structural relationship for many authors thinking/modelling the effect of monetary policy on the economy.
+
+Because the idea of a Phillips curve is an ongoing discussion in the literature. This is how it should be presented. This discussion has produced both theoretical and empirical work. Make sure you correctly represent both.
+
+There is a big literature discussing the idea of a Phillips curve, its empirical validation, etc. Good starting points for a literature review are \citet{King_Watson_1994}, \citet{Lucas_1976}, \citet{Kool_2000}. }
+%--------------------------------------------------------------------------------------------------
+
+% ----- Managing Inflation ------------------------------------------------------------------------
+\section{Managing Inflation}
+\label{sec:Managing_Inflation}
+\todo[inline]{A thorough introduction to the idea of managing inflation is missing. This section should start describing, in a clear and straightforward way, how Central Banks manage inflation. Then, the idea of the Taylor rule should be introduced. Importantly, the role of the Taylor rule versus the actual inflation managing done by Central Banks needs to be highlighted and clarified.}
+
+The Taylor rule is based on five assertions:
+\begin{itemize}
+  \item There is a natural equilibrium towards which the economy tends to in the long run.
+  \item In the long run there is also no substitution between unemployment and inflation (as the Phillips curve is vertical in the long run).
+  \item As prices are rigid in the short run, fluctuations around the growth equilibrium are possible.
+  \item These fluctuations are determined by expectations towards future decisions made by the central banks, especially the expected interest rate and inflation influenced by central bank behaviour.
+  \item Decisions of central banks can be understood as policy rules, which implies that the nominal interest rate is the tool the central banks use to regulate economic fluctuations.
+\end{itemize}
+
+The simplified Taylor rule equation is:\todo{What is the context that leads us to label this version as \textit{simplified}?}
+\begin{equation}
+  \label{eq:taylor}
+  i_t=i^{\star}+a(\pi_t-\pi^{\star})-b(u_t-u_n)\text{,}
+\end{equation}
+
+where $i_t$ is the policy rate, $i^{\star}$ is the nominal interest rate, $r_n$ is  the real interest rate, $a$ and $b$ are weight factors, $\pi_t$ and $\pi^{\star}$ are the targeted and actual inflation rates respectively, and $u_t$ and $u_n$ are the actual and natural unemployment rates.
+
+The Taylor rule is not a rulebook, but just a framework used to explain central banks’ behaviour. In recent years there has been a trend for central banks to significantly deviate from what the Taylor rule suggests. \todo{This ideas needs to be expanded, better put in context, and explained more clearly.}
+
+%--------------------------------------------------------------------------------------------------
 
 % =================================================================================================
 
